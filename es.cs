@@ -1,27 +1,38 @@
-public class AreaCalculator {
+using System;
 
-    // Rectangle
-    public static double area(double length, double breadth) {
+class AreaCalculator
+{
+    public static double Area(double length, double breadth)
+    {
         return length * breadth;
     }
 
-    // Circle
-    public static double area(double radius) {
+    public static double Area(double radius)
+    {
         return Math.PI * radius * radius;
     }
 
-    // Triangle (distinct method name to avoid ambiguity)
-    public static double areaTriangle(double base, double height) {
-        return 0.5 * base * height;
+    public static double Area(double baseLength, double height, string shape)
+    {
+        if (shape.ToLower() == "triangle")
+        {
+            return 0.5 * baseLength * height;
+        }
+        else
+        {
+            return baseLength * height;
+        }
     }
 
-    public static void main(String[] args) {
-        double rectangle = area(5, 4);
-        double circle = area(3);
-        double triangle = areaTriangle(6, 3);
+    static void Main()
+    {
+        double rectangle = Area(5, 4);
+        Console.WriteLine("Rectangle Area: " + rectangle);
 
-        System.out.println("Rectangle Area: " + rectangle);
-        System.out.println("Circle Area: " + circle);
-        System.out.println("Triangle Area: " + triangle);
+        double circle = Area(3);
+        Console.WriteLine("Circle Area: " + circle);
+
+        double triangle = Area(6, 3, "triangle");
+        Console.WriteLine("Triangle Area: " + triangle);
     }
 }
